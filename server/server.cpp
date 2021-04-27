@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include "Auth.h"
+#include "Irc.h"
 
 #define MAX_MSG 100
 #define MSG_ARRAY_SIZE (MAX_MSG+3)

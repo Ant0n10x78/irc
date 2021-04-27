@@ -4,7 +4,7 @@ using namespace std;
 
 class Irc{
 	public:
-	string channel[]={"Channel"};
-	
+	string channel[100]={"test Channel"};
+
 
 };
