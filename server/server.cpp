@@ -21,7 +21,7 @@ int main(){
 	char msg[MSG_ARRAY_SIZE];
 
 	memset(msg,0x0,MSG_ARRAY_SIZE);
-	cout <<"Entrez le numéro de port utilisé en ecoute";
+	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
 	cin >> listenPort;
 
 	listenSocket = socket (AF_INET, SOCK_DGRAM,0);
@@ -42,7 +42,7 @@ int main(){
 
 	listen(listenSocket,5);
 
-	cout<<"Attente de requete sur le port"<<listenPort<<"\n";
+	cout<<"Attente de requete sur le port...\n"<<listenPort<<"\n";
 
 	while(1){
 		clientAddressLength = sizeof(clientAddress);
