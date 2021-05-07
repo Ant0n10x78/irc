@@ -1,4 +1,5 @@
 #include <string>
+#include "Channel.h"
 
 using namespace std;
 
@@ -6,6 +7,7 @@ class Irc{
 	public:
 	char channel[200];
 	int tblIp[20];
+	Channel channelTbl[10];
 
 	void addUser(string userName){
 		//addUSer

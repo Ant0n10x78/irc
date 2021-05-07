@@ -1,5 +1,11 @@
 //Class Channel
+#include <string>
 
-class Channel:
+using namespace std;
+
+class Channel{
 	public:
+	string name;
+	int tblIp[10];
+};
 

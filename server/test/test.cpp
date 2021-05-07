@@ -1,13 +1,16 @@
 #include <iostream>
 #include <string>
-#include "Auth.h"
-#include "Irc.h"
+#include "../header/Auth.h"
+#include "../header/Irc.h"
 
 using namespace std;
 
 int main(){
+	//Instantiation
 	Auth user;
 	Irc testIrc;
+	Channel channel;
+
 	char userTest[]="Antonio";
 
 	cout<<"Hello TeST\n";
@@ -18,7 +21,10 @@ int main(){
 	}
 
 //Test Irci
-	cout<<"\n\n Test:\n"; 
-	testIrc.checkIp(testIrc,0);
+	cout<<"\n\n Test:\n";
+	channel.name="test Channel";
+       	testIrc.channelTbl[0]=channel;
+	cout<<testIrc.channelTbl[0].name;
+		
 	return 0;
 }

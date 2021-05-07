@@ -11,4 +11,8 @@ Système irc basé sur le rfc 1459.
 
 --->Utilisation de string dans les classes car plus facilement manipulable.
 
+Règle mis en place:
+--Chaque serveur sera limiter à 10 client.
+--Chaque serveur sera limiter à 3 channel.
 
+Ces restrictions sont mis en place afin de faire une généralisation et ne pas utiliser trop de ressources pour les tests.
