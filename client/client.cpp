@@ -49,11 +49,10 @@ int main(){
 			hostInfo->h_addr_list[0],hostInfo->h_length);
 	serverAddress.sin_port = htons(serverPort);
 
-	cout <<"\nSaisir du texte : \n";
-	cout <<"Pour sorti taper '.'uniquement";
-        cout <<"Seul les  "<<MAX_MSG<<" caractères seront utilisés";
+	cout <<"Pour sorti taper '.'uniquement\n";
+        cout <<"Seul les  "<<MAX_MSG<<"premier caractères seront utilisés\n";
 
-	cout<<"Saisie message :";
+	cout<<user<<">";
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cin.get(msg,MAX_MSG,'\n');
 

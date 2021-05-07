@@ -4,6 +4,9 @@ using namespace std;
 
 class Auth{
 	public:
+	int id;
+	string userName[20];
+
 	void connection(string cmd){
 	
 		if("/PASS"==cmd){

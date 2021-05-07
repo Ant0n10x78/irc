@@ -5,8 +5,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include "Auth.h"
-#include "Irc.h"
+#include "header/Auth.h"
+#include "header/Irc.h"
 
 #define MAX_MSG 100
 #define MSG_ARRAY_SIZE (MAX_MSG+3)
@@ -19,6 +19,7 @@ int main(){
 	socklen_t clientAddressLength;
 	struct sockaddr_in clientAddress, serverAddress;
 	char msg[MSG_ARRAY_SIZE];
+	Irc testIrc;
 
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
@@ -52,16 +53,12 @@ int main(){
 			exit(1);
 			}
 		cout <<"Depuis "<<inet_ntoa(clientAddress.sin_addr);
-
 		cout<<":"<<ntohs(clientAddress.sin_port)<<"\n";
 
 		cout<<"Message reçu: "<<msg<<"\n";
 
-		msgLength = strlen(msg);
-		//Convertion de cette ligne en majuscule
-		for (i = 0;i<msgLength;i++){
-			msg[i] = toupper(msg[i]);
-		}
+	//	msgLength = strlen(msg);
+		
 		if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){
 			cerr << "Emission du message impossbile";
 			exit(1);
