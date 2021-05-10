@@ -12,7 +12,7 @@ class Irc{
 	string cmdArray[ARRAY_CMD_LENGTH]={"/PASS","/NICK","/USER","/JOIN"};
 	Channel channelTbl[10];
 
-	string returnCmd(string str){
+	string returnCmd(string str){//return a COMMAND see DOC
 		string x="     ";
 		int i = 0;
 		for(i;i<5;i++){
@@ -21,7 +21,7 @@ class Irc{
 		return x;
 	}
 
-	void addUser(string userName){
+	void addUser(string userName){//Add a user in a channel
 		//addUSer
 	}
 
