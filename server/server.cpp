@@ -20,6 +20,7 @@ int main(){
 	struct sockaddr_in clientAddress, serverAddress;
 	char msg[MSG_ARRAY_SIZE];
 	Irc testIrc;
+	Channel channel;
 
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
@@ -56,7 +57,7 @@ int main(){
 		cout<<":"<<ntohs(clientAddress.sin_port)<<"\n";
 
 		cout<<"Message reçu: "<<msg<<"\n";
-
+		cout<<channel.checkCmd(msg);
 	//	msgLength = strlen(msg);
 		
 		if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){

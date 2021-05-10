@@ -25,6 +25,11 @@ int main(){
 	channel.name="test Channel";
        	testIrc.channelTbl[0]=channel;
 	cout<<testIrc.channelTbl[0].name;
-		
+	
+	string teststr;
+	cout<<"Entrer un channel";
+	cin>>teststr;
+
+	cout<<"\nCheck command : "<<testIrc.checkCommand(testIrc.returnCmd(teststr))<<"\n";	
 	return 0;
 }
