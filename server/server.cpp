@@ -21,7 +21,7 @@ int main(){
 	char msg[MSG_ARRAY_SIZE];
 	Irc testIrc;
 	Channel channel;
-
+	channel.name = "test";
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
 	cin >> listenPort;
@@ -55,9 +55,11 @@ int main(){
 			}
 		cout <<"Depuis "<<inet_ntoa(clientAddress.sin_addr);
 		cout<<":"<<ntohs(clientAddress.sin_port)<<"\n";
+		
+		testIrc.addChannel(channel);
 
 		cout<<"Message reçu: "<<msg<<"\n";
-		cout<<channel.checkCmd(msg);
+		cout<<testIrc.checkCmd(msg)<<"\n";
 	//	msgLength = strlen(msg);
 		
 		if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){

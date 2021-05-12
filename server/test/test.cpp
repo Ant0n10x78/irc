@@ -2,6 +2,7 @@
 #include <string>
 #include "../header/Auth.h"
 #include "../header/Irc.h"
+#include "../header/Function.h"
 
 using namespace std;
 
@@ -25,11 +26,21 @@ int main(){
 	channel.name="test Channel";
        	testIrc.channelTbl[0]=channel;
 	cout<<testIrc.channelTbl[0].name;
-	
+/*	
 	string teststr;
 	cout<<"Entrer un channel";
 	cin>>teststr;
 
-	cout<<"\nCheck command : "<<testIrc.checkCommand(testIrc.returnCmd(teststr))<<"\n";	
+	cout<<"\nCheck command : "<<testIrc.checkCmd(testIrc.returnCmd(teststr))<<"\n";	
 	return 0;
+*/
+
+//Test SPLIT
+	string testt="salut";
+	cout<<"\n\n Test SPLIT: "<<testt[0];
+	string tblString[10];
+	split("/JOIN salut",tblString);
+	for(int k=0;k<2;k++){
+		cout<<tblString[k];
+	}
 }

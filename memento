@@ -1,0 +1,2 @@
+--->Channel.h
+channelTbl[0].name=="" --> return true if name is empty

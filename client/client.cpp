@@ -32,7 +32,7 @@ int main(){
 		exit(1);
 	}
 
-	cout <<"Entrez le numéro de port du serveur";
+	cout <<"Entrez le numéro de port du serveur:\n ";
 	cin >> serverPort;
 	cin.ignore(1,'\n');//Suppression du saut de ligne
 

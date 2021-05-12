@@ -21,11 +21,19 @@ class Irc{
 		return x;
 	}
 
-	void addUser(string userName){//Add a user in a channel
-		//addUSer
+	void addChannel(Channel channel){//Add a user in a channel
+		int i = 0;
+		for(i;i<10;i++){
+			if(channelTbl[i].name==""){
+			cout<<"Ajout d'un channel dans le serveur irc\n";
+			cout<<"Emplacement restant sur ce serveur :"<<10-i<<"\n";
+			channelTbl[i]=channel;
+			break;
+			}
+		}
 	}
 
-	bool checkCommand(string cmd){
+	bool checkCmd(string cmd){
 		int i = 0;
 		for(i;i<ARRAY_CMD_LENGTH;i++){
 			if(cmd==cmdArray[i]){
