@@ -1,6 +1,6 @@
 #include <string>
+#include <iostream>
 #include "Channel.h"
-#include <stdexcept>
 
 using namespace std;
 
@@ -10,7 +10,7 @@ class Irc{
 	public:
 	char channel[200];
 	int tblIp[20];
-	string cmdArray[ARRAY_CMD_LENGTH]={"/PASS","/NICK","/USER","/JOIN"};
+	string cmdArray[ARRAY_CMD_LENGTH]={"/JOIN","/NICK","/PASS","/USER"};
 	Channel channelTbl[10];
 
 	string returnCmd(string str){//return a COMMAND (only the five first char)
@@ -48,7 +48,7 @@ class Irc{
 		return false;
 	}
 	
-	void checkIp(Irc irc,int ip){//search brute
+	void checkIp(Irc irc,int ip){//search brut ip
 		int i =0;
 		bool check=0;
 		for(i=0;i<19;i++){
@@ -60,8 +60,27 @@ class Irc{
 			cout<<"L'ip n'existe pas";
 		}
 	}
+	//declaration of all function for commands IRC
 
-		void callFunction(string cmd){//redirection of the string to a function
+	void ircUSER(string cmd){
+		cout<<"Function ircUSER.\n";
+	}
+	
+	void ircJOIN(string cmd){
+		cout<<"Function ircJOIN.\n";
+	}
+
+	void ircNICK(string cmd){
+		cout<<"Function ircNICK.\n";
+	}
+
+	void ircPASS(string cmd){
+		cout<<"Function ircPASS.\n";
+	}
+	
+//	void (*pointeur[])(string a)={ircUSER,ircJOIN};	
+
+	void callFunction(string cmd){//redirection of the string to a function
 		
 	}
 };

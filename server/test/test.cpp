@@ -6,6 +6,11 @@
 
 using namespace std;
 
+
+typedef int (*tbla[]) (int a);
+
+int yala(int a){return a;}
+
 int main(){
 	//Instantiation
 	Auth user;
@@ -43,4 +48,8 @@ int main(){
 	for(int k=0;k<2;k++){
 		cout<<tblString[k];
 	}
+
+	
+	//TEST array function
+	tbla functions[] = {yala};
 }
