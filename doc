@@ -7,7 +7,11 @@ dpnc.unige.ch/users/meunier/DATA/DOCS/socket.cpp.pdf
 
 Système irc basé sur le rfc 1459.
 
-
+DEPENDENCIES:
+#include <iostream>
+#include <string>
+#include <stdlib>
+#include <functional>
 
 --->Utilisation de string dans les classes car plus facilement manipulable.
 
@@ -21,5 +25,11 @@ Ces restrictions sont mis en place afin de faire une généralisation et ne pas 
 
 A commande is define by 5 char
 
+A switch can only contain integer, to compare strings in switches there are multiple solutions:
+->make two arrays , one that are the strings the other an array of the pointeur functions,the strings command need the same position that the pointeur functions in the other array
+->hash the strings and uses the switch
 
+We choose to use the switch because we don't success to make an array of pointeur;
+
+To make an hash with a string we gonna use from the header <functional>: std::hash<string>()(x)
 
