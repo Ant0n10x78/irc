@@ -14,14 +14,15 @@
 using namespace std;
 
 int main(){
-	int listenSocket, i;
+	int listenSocket, i,portT;
 	unsigned short int listenPort, msgLength;
 	socklen_t clientAddressLength;
 	struct sockaddr_in clientAddress, serverAddress;
-	char msg[MSG_ARRAY_SIZE];
+	char msg[MSG_ARRAY_SIZE],msgSend[MSG_ARRAY_SIZE];
 	Irc testIrc;
 	Channel channel;
 	channel.name = "test";
+	channel.tblPort[0] = 123;
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
 	cin >> listenPort;
@@ -55,17 +56,20 @@ int main(){
 			}
 		cout <<"Depuis "<<inet_ntoa(clientAddress.sin_addr);
 		cout<<":"<<ntohs(clientAddress.sin_port)<<"\n";
-		
+
+		portT = ntohs(clientAddress.sin_port);//Récuperation du port du client
+
 		if(testIrc.checkCmd(msg)){
 			cout<<"Message checked."<<endl;
+			testIrc.callFunction(msg);
 		}
-
-		testIrc.addChannel(channel);
-		cout<<channel.name;
+		
+		channel.printPort();
+		channel.addClient(clientAddress);
 
 		cout<<"Message reçu: "<<msg<<"\n";
 		cout<<testIrc.checkCmd(msg)<<"\n";
-	//	msgLength = strlen(msg);
+		msgLength = strlen(msg);
 		
 		if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){
 			cerr << "Emission du message impossible";

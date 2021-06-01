@@ -1,5 +1,3 @@
-#include <string>
-#include <iostream>
 #include "Channel.h"
 
 using namespace std;
@@ -38,6 +36,10 @@ class Irc{
 		}
 	}
 
+	void addIp(string s){
+		
+	}
+
 	bool checkCmd(string cmd){//return true if the command exist
 		int i = 0;
 		for(i;i<ARRAY_CMD_LENGTH;i++){
@@ -65,7 +67,7 @@ class Irc{
 	void ircUSER(string cmd){
 		cout<<"Function ircUSER.\n";
 	}
-	
+
 	void ircJOIN(string cmd){
 		cout<<"Function ircJOIN.\n";
 	}
@@ -77,10 +79,19 @@ class Irc{
 	void ircPASS(string cmd){
 		cout<<"Function ircPASS.\n";
 	}
-	
-//	void (*pointeur[])(string a)={ircUSER,ircJOIN};	
-
-	void callFunction(string cmd){//redirection of the string to a function
 		
+	void callFunction(string cmd){//redirection of the string to a function
+		if(cmd == "/USER"){
+			ircUSER(cmd);
+		}
+		else if(cmd == "/JOIN"){
+			ircJOIN(cmd);
+		}
+		else if(cmd == "/NICK"){
+			ircNICK(cmd);
+		}
+		else if(cmd == "/PASS"){
+			ircPASS(cmd);
+		}
 	}
 };

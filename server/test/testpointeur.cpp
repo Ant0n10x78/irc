@@ -1,17 +1,20 @@
 #include <iostream>
 #include <string>
-using namespace std; 
+#include "../header/Irc.h"
 
-void affiche(string a){cout<<"affiche()\n";}
-void abc(string a){cout<<"affiche2()\n";}
+using namespace std;
+
+void rStr(string x){
+	cout<<x<<"\n";
+}
+void rStr2(string x){
+	cout<<x<<"\n";
+}
 
 int main(){
-
-	void (*pointeur[])(string a) = {affiche,abc};
-
-		pointeur[0]("daz");
-		pointeur[1]("salut");
-
-
+	Irc irc;
+	void (*tblStr[])(string x) = {&rStr,&rStr2,Irc::ircUSER};
+	tblStr[0]("salut");
+	tblStr[1]("machine2");
 	return 0;
 }
