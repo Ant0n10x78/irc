@@ -14,6 +14,7 @@
 using namespace std;
 
 int main(){
+	//INIT
 	int listenSocket, i,portT;
 	unsigned short int listenPort, msgLength;
 	socklen_t clientAddressLength;
@@ -22,9 +23,11 @@ int main(){
 	Irc testIrc;
 	Channel channel;
 	channel.name = "test";
-	channel.__init__tblClient();
-	channel.tblPort[0] = 123;
 	memset(msg,0x0,MSG_ARRAY_SIZE);
+	//Fonction INIT
+	channel.__init__tblClient();
+	testIrc.__init__channelTbl();
+
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
 	cin >> listenPort;
 
@@ -55,21 +58,18 @@ int main(){
 			cerr<<"Probleme de reception du message";
 			exit(1);
 			}
-		cout <<"Depuis "<<inet_ntoa(clientAddress.sin_addr);
+		cout <<"\nDepuis "<<inet_ntoa(clientAddress.sin_addr);
 		cout<<":"<<ntohs(clientAddress.sin_port)<<"\n";
 
-		portT = ntohs(clientAddress.sin_port);//Récuperation du port du client
-
 		if(testIrc.checkCmd(msg)){
-			cout<<"Message checked."<<endl;
+			cout<<"\nMessage checked."<<endl;
 			testIrc.callFunction(msg);
 		}
 		
 		channel.printPort();
 		channel.addClient(clientAddress);
-		channel.checkAddClient(clientAddress);
 
-		cout<<"Message reçu: "<<msg<<"\n";
+		cout<<"\nMessage reçu: "<<msg<<"\n";
 		cout<<testIrc.checkCmd(msg)<<"\n";
 		msgLength = strlen(msg);
 		

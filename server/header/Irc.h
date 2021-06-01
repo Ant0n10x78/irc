@@ -10,6 +10,16 @@ class Irc{
 	int tblIp[20];
 	string cmdArray[ARRAY_CMD_LENGTH]={"/JOIN","/NICK","/PASS","/USER"};
 	Channel channelTbl[10];
+	Channel initChannel;
+
+	void __init__channelTbl(){
+		this->initChannel.name = "test";
+		this->initChannel.__init__tblClient();
+		int i = 0;
+		for(i;i<10;i++){
+			this->channelTbl[i]=initChannel;
+		}
+	}
 
 	string returnCmd(string str){//return a COMMAND (only the five first char)
 		string x="     ";

@@ -73,7 +73,7 @@ int main(){
 //		timeVal.tv_usec = 0;
 
 		if (select(socketDescriptor+1,&readSet, NULL, NULL, &timeVal)){
-		//Lecture de la ligne modifié par le serveur 
+		//Lecture du messgae envoyé par le serveur 
 		memset(msg, 0x0,MSG_ARRAY_SIZE);
 		numRead = recv(socketDescriptor,msg,MAX_MSG,0);
 			if(numRead <0){

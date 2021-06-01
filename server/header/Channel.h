@@ -25,9 +25,6 @@ class Channel{
 	}
 
 	void printPort(){//test function 
-		for(int i = 0;i<3;i++){
-			cout<<"\n"<<tblPort[i]<<"\n";
-		}
 	}
 
 	void addClient(struct sockaddr_in client){
@@ -39,7 +36,7 @@ class Channel{
 			}
 			if(this->tblClient[i].sin_port == 0){
 				this->tblClient[i]=client;
-				cout<<"addClient,IP:"<<inet_ntoa(this->tblClient[i].sin_addr)<<":"<<ntohs(client.sin_port);
+				cout<<"addClient,IP:"<<inet_ntoa(this->tblClient[i].sin_addr)<<":"<<ntohs(client.sin_port)<<" to :"<<this->name;
 				break;
 			}
 		}
@@ -56,7 +53,6 @@ class Channel{
 	void sendChannel(int socket,const void *message,size_t length,int flags){
 		int i = 0;
 		for(i;i<10;i++){
-				cout<<"\nMachine stocker :"<<inet_ntoa(this->tblClient[i].sin_addr)<<":"<<ntohs(this->tblClient[i].sin_port);
 			if(this->tblClient[i].sin_port != 0){
 				
 				if(sendto(socket,message,length,flags,(struct sockaddr *) &this->tblClient[i],sizeof(this->tblClient[i]))<0){

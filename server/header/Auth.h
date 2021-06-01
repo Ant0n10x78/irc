@@ -5,7 +5,7 @@ using namespace std;
 class Auth{
 	public:
 	int id;
-	string userName[20];
+	string userName;
 
 	void connection(string cmd){
 	
