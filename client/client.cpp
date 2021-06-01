@@ -69,8 +69,8 @@ int main(){
 		//Attente de la réponse pendant une seconde
 		FD_ZERO(&readSet);
 		FD_SET(socketDescriptor, &readSet);
-		timeVal.tv_sec = 1;
-		timeVal.tv_usec = 0;
+//		timeVal.tv_sec = 1;
+//		timeVal.tv_usec = 0;
 
 		if (select(socketDescriptor+1,&readSet, NULL, NULL, &timeVal)){
 		//Lecture de la ligne modifié par le serveur 

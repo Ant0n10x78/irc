@@ -73,10 +73,11 @@ int main(){
 		cout<<testIrc.checkCmd(msg)<<"\n";
 		msgLength = strlen(msg);
 		
-		if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){
+		channel.sendChannel(listenSocket,msg,msgLength+1,0);
+		/*if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){
 			cerr << "Emission du message impossible";
 			exit(1);
-		}
+		}*/
 	}
 	return 0;
 }

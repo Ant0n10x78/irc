@@ -56,12 +56,14 @@ class Channel{
 	void sendChannel(int socket,const void *message,size_t length,int flags){
 		int i = 0;
 		for(i;i<10;i++){
+				cout<<"\nMachine stocker :"<<inet_ntoa(this->tblClient[i].sin_addr)<<":"<<ntohs(this->tblClient[i].sin_port);
 			if(this->tblClient[i].sin_port != 0){
 				
 				if(sendto(socket,message,length,flags,(struct sockaddr *) &this->tblClient[i],sizeof(this->tblClient[i]))<0){
 					cerr << "Emission du message impossible";
 					exit(1);
 				}
+				cout<<"\nEnvoie à :"<<inet_ntoa(this->tblClient[i].sin_addr)<<":"<<ntohs(this->tblClient[i].sin_port);
 			}
 		}
 	}
