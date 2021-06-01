@@ -22,6 +22,7 @@ int main(){
 	Irc testIrc;
 	Channel channel;
 	channel.name = "test";
+	channel.__init__tblClient();
 	channel.tblPort[0] = 123;
 	memset(msg,0x0,MSG_ARRAY_SIZE);
 	cout <<"Entrez le numéro de port utilisé en ecoute:\n";
@@ -66,6 +67,7 @@ int main(){
 		
 		channel.printPort();
 		channel.addClient(clientAddress);
+		channel.checkAddClient(clientAddress);
 
 		cout<<"Message reçu: "<<msg<<"\n";
 		cout<<testIrc.checkCmd(msg)<<"\n";
