@@ -36,17 +36,18 @@ int main(){
 		cerr <<"Impossible de créer le socket d'ecoute ";
 		exit(1);
 	}
-
+	//configuration du socket server
 	serverAddress.sin_family=AF_INET;
 	serverAddress.sin_family = AF_INET;
 	serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
 	serverAddress.sin_port = htons(listenPort);
 
+	//On lie le socket au port
 	if(bind(listenSocket,(struct sockaddr *) &serverAddress,sizeof(serverAddress))<0){
 		cerr<<"Impossible de lier le socket au port";
 		exit(1);
 	}
-
+	//Mis en place d'une ecoute
 	listen(listenSocket,5);
 
 	cout<<"Attente de requete sur le port...\n"<<listenPort<<"\n";
@@ -66,14 +67,13 @@ int main(){
 			testIrc.callFunction(msg);
 		}
 		
-		channel.printPort();
-		channel.addClient(clientAddress);
+		channel.addClient(clientAddress);//vérification du client dans le channel
 
 		cout<<"\nMessage reçu: "<<msg<<"\n";
 		cout<<testIrc.checkCmd(msg)<<"\n";
 		msgLength = strlen(msg);
-		
-		channel.sendChannel(listenSocket,msg,msgLength+1,0);
+		//Envoie du message au channel
+		channel.sendChannel(listenSocket,msg,msgLength+1,0,clientAddress);
 		/*if (sendto(listenSocket,msg,msgLength +1,0,(struct sockaddr *) &clientAddress,sizeof(clientAddress))<0){
 			cerr << "Emission du message impossible";
 			exit(1);

@@ -12,6 +12,7 @@ DEPENDENCIES:
 #include <string>
 #include <stdlib>
 #include <functional>
+#include <thread>
 
 --->Utilisation de string dans les classes car plus facilement manipulable.
 
@@ -33,3 +34,4 @@ We choose to use the switch because we don't success to make an array of pointeu
 
 To make an hash with a string we gonna use from the header <functional>: std::hash<string>()(x)
 
+Well, after many try it doesn't work so we made it with if condition....

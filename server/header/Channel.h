@@ -50,10 +50,11 @@ class Channel{
 		return 0;
 	}
 	
-	void sendChannel(int socket,const void *message,size_t length,int flags){
+	void sendChannel(int socket,const void *message,size_t length,int flags,struct sockaddr_in client){
 		int i = 0;
 		for(i;i<10;i++){
-			if(this->tblClient[i].sin_port != 0){
+			//condition pour que le client ne reçois pas son propre message
+			if(this->tblClient[i].sin_port != 0 && this->tblClient[i].sin_port!=client.sin_port){
 				
 				if(sendto(socket,message,length,flags,(struct sockaddr *) &this->tblClient[i],sizeof(this->tblClient[i]))<0){
 					cerr << "Emission du message impossible";
