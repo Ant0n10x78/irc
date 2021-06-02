@@ -1,2 +1,2 @@
-g++ -o clt client.cpp
+g++ -std=c++11 -pthread -o clt client.cpp
 ./clt

@@ -5,11 +5,34 @@
 #include <limits>
 #include <cstdlib>
 #include <cstring>
+#include <thread>
 
 #define MAX_MSG 100
 #define MSG_ARRAY_SIZE (MAX_MSG+3)
 
 using namespace std;
+
+static bool s_Finished = false;
+
+void testThread(int socketDescriptor,fd_set readSet,struct timeval timeVal,char *msg,int numRead){
+	while(!s_Finished){
+		if (select(socketDescriptor+1,&readSet, NULL, NULL, &timeVal)){
+		//Lecture du messgae envoyé par le serveur 
+		memset(msg, 0x0,MSG_ARRAY_SIZE);
+		numRead = recv(socketDescriptor,msg,MAX_MSG,0);
+		/*	if(numRead <0){
+				cerr <<"Aucune reponse du serveur\n";
+				close(socketDescriptor);
+				exit(1);
+			}*/
+		cout << "Message traité:"<<msg<<"\n";
+		}
+		else{
+			//cout <<"Le serveur n'a pas répondu dans la seconde \n";
+		}
+	}
+		
+}
 
 int main(){
 	int socketDescriptor;
@@ -69,9 +92,12 @@ int main(){
 		//Attente de la réponse pendant une seconde
 		FD_ZERO(&readSet);
 		FD_SET(socketDescriptor, &readSet);
-//		timeVal.tv_sec = 1;
-//		timeVal.tv_usec = 0;
-
+		//timeVal.tv_sec = 1;
+		//timeVal.tv_usec = 0;
+		//thread worker(testThread,socketDescriptor,readSet,timeVal,msg,numRead);
+		//cin.get();
+		//s_Finished=true;
+		//worker.join();
 		if (select(socketDescriptor+1,&readSet, NULL, NULL, &timeVal)){
 		//Lecture du messgae envoyé par le serveur 
 		memset(msg, 0x0,MSG_ARRAY_SIZE);
@@ -86,7 +112,7 @@ int main(){
 		else{
 			cout <<"Le serveur n'a pas répondu dans la seconde \n";
 		}
-
+		
 		//invite de commande pour l'utilisateur et lecture des caractère jusqu'à la fin
 		cout<<user<<">";
 		memset(msg,0x0,MSG_ARRAY_SIZE);
