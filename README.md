@@ -4,9 +4,7 @@
 -->g++ pour la compilation
 -->bash pour éxécuter le serveur et client
 <h3>Exemple d'utilisation serveur:</h3>
-Le port par défaut est <strong>8080</strong></br>
-./server [port]
+./server 
 
 <h3>Exemple d'utilisation client:</h3>
-Le port de connexion par défaut est <strong>8080</strong></br>
-./client [port]
+./client 
